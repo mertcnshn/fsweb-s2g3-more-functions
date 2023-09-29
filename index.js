@@ -16,9 +16,20 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(filePath) {
+  if (!filePath) {
+    return "";
+  } else {
+    const pathPieces = filePath.split("/");
+    console.log(pathPieces);
+    const fileName = pathPieces[pathPieces.length - 1];
+    return fileName;
+  }
 }
+console.log(
+  "Görev 1:",
+  dosyaAdiniBul("C:/Users/johnsmith/Music/Beethoven_5.mp3")
+);
 
 /*
   GÖREV 2
@@ -38,15 +49,35 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(numberArray) {
+  /*{
+  if (numberArray.length === 0) {
+    return null;
+  }
+  const topla = numberArray.reduce((toplam, number) => toplam + number, 0);
+  const aritmetikOrt = topla / numberArray.length;
+  return aritmetikOrt;
 }
+*/
+
+  let arrayOrtalama;
+  if (numberArray.length === 0) {
+    return null;
+  }
+  let arrayToplam = 0;
+  for (let i = 0; i < numberArray.length; i++) {
+    arrayToplam += numberArray[i];
+  }
+  arrayOrtalama = arrayToplam / numberArray.length;
+  return arrayOrtalama;
+}
+console.log("Görev 2:", ortalamaBul([4]));
 
 /*
   GÖREV 3
   - Input:  Bir sayı arrayini ve ortalama bulmaya yarayacak bir fonksiyonu parametre olarak alacak bir fonksiyon oluştur.
   - Output: Yazacağın fonksiyon input olarak aldığı sayı arrayinin aritmetik ortalamasından büyük ya da eşit elemanlardan oluşan bir array dönmeli.
-  * Çağırırken kendi ortalama fonksiyonunla çağırabilirsin, ama parametrenin tanımlama aşamasında soyut bir ifade olduğunu unutma.
+  * Çağırırken kendi ortalama fonksiyonunla çağırabilirsin, ama parametrenin tanımlama aş amasında soyut bir ifade olduğunu unutma.
   * f(x) = 2x+5 içerisindeki x değeri gibi.
 
   örnek input:  []
@@ -62,9 +93,19 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamadanBuyukleriBul(arr, ortalamaFonk) {
+  if (arr.length === 0) {
+    return null;
+  }
+  const ortalamasi = ortalamaFonk(arr);
+  const buyukler = arr.filter((sayi) => sayi >= ortalamasi);
+  return buyukler;
 }
+
+console.log(
+  "Görev 3:",
+  ortalamadanBuyukleriBul([50, -26, 153, 7], ortalamaBul)
+);
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
